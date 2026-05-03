@@ -10,7 +10,7 @@ async function loadLeaderboard() {
         tableContainer.innerHTML = '<div class="loading">⏳ Loading...</div>';
         if (emptyState) emptyState.style.display = 'none';
 
-        const csvUrl = './leaderboard.csv';
+        const csvUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? './leaderboard.csv' : 'https://raw.githubusercontent.com/AiIkram/gnn-parkinsons-challenge/main/docs/leaderboard.csv';
         console.log('Fetching leaderboard from:', csvUrl);
 
         const response = await fetch(csvUrl);
